@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="add_alw_wizard_form_view" model="ir.ui.view">
+            <field name="name">add_alw_wizard_form_view.form</field>
+            <field name="model">add.alw.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Lost Reason">
+                    <group class="oe_title">
+                        <field name="contract_ids" widget="many2many_tags"/>
+                        <field name="type" string="Salary Rule"/>
+                        <field name="type_input" string="Type"/>
+                        <field name="value" string="Value"/>
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" data-hotkey="q"/>
+                        <button string="Reset All" name="action_reset" type="object" class="btn-danger" data-hotkey="q"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="add_alw_wizard_action" model="ir.actions.act_window">
+            <field name="name">Add Allowance/Deduction</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">add.alw.wizard</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="add_alw_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.actions.server" id="action_index_contracts_add">
+            <field name="name">Add or Deduct</field>
+            <field name="model_id" ref="hr_contract.model_hr_contract"/>
+            <field name="binding_model_id" ref="hr_contract.model_hr_contract"/>
+            <field name="state">code</field>
+            <field name="code">
+                    if records:
+                        action = records._action_add_alw()
+            </field>
+        </record>
+
+    </data>
+</odoo>

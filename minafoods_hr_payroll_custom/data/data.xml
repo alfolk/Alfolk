@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="structure_type_mina_payroll" model="hr.payroll.structure.type">
+            <field name="name">Mina Payroll</field>
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <record id="hr_salary_structure_mina" model="hr.payroll.structure">
+            <field name="name">Salary Structure of Mina Foods</field>
+            <field name="type_id" ref="structure_type_mina_payroll"/>
+            <field name="country_id" eval="False"/>
+        </record>
+
+        <!--Allowances-->
+        <record id="hr_payroll_rule_alw_call" model="hr.salary.rule">
+            <field name="code">ALWCALL</field>
+            <field name="name">بدل إتصالات</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_call or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.alw_call/(contract.no_days_month-contract.number_off_days)) * contract.number_of_days</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_trans" model="hr.salary.rule">
+            <field name="code">ALWTRANS</field>
+            <field name="name">بدل إنتقال</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_trans or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.alw_trans/(contract.no_days_month-contract.number_off_days)) * contract.number_of_days</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_clk" model="hr.salary.rule">
+            <field name="code">ALWCLK</field>
+            <field name="name">بدل كلارك</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_clk or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.alw_clk/(contract.no_days_month-contract.number_off_days)) * contract.number_of_days</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_bonus" model="hr.salary.rule">
+            <field name="code">ALWBONUS</field>
+            <field name="name">حافز</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_bonus or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.alw_bonus/(contract.no_days_month-contract.number_off_days)) * contract.number_of_days</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_bonus1" model="hr.salary.rule">
+            <field name="code">ALWBONUS2</field>
+            <field name="name">بونص(مكافأة)</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_bonus1 or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.alw_bonus1</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_bonus2" model="hr.salary.rule">
+            <field name="code">ALWBONUS3</field>
+            <field name="name">حافز إنتظام</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_bonus2 or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.alw_bonus2</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_food" model="hr.salary.rule">
+            <field name="code">ALWFOOD</field>
+            <field name="name">بدل وجبة</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_food or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.alw_food/(contract.no_days_month-contract.number_off_days)) * contract.number_of_days</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_late" model="hr.salary.rule">
+            <field name="code">ALWLATE</field>
+            <field name="name">بدل سهر</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_late or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.alw_late</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_late2" model="hr.salary.rule">
+            <field name="code">ALWLATEBONUS</field>
+            <field name="name">وجبة سهر</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_late2 or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.alw_late2</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_alw_ovr_time" model="hr.salary.rule">
+            <field name="code">ALWOVER</field>
+            <field name="name">أوفر تايم</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.alw_ovr_time or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.alw_ovr_time</field>
+            <field name="sequence" eval="4"/>
+            <field name="note">Allowances for the employee</field>
+        </record>
+
+        <!-- Deductions -->
+        <record id="hr_payroll_rule_duc_uniform" model="hr.salary.rule">
+            <field name="code">DEDUNI</field>
+            <field name="name">خصم يونيفورم</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_uniform or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_uniform)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_duc_minus" model="hr.salary.rule">
+            <field name="code">DEDMIN</field>
+            <field name="name">جزاءات</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_minus or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_minus)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_duc_loans" model="hr.salary.rule">
+            <field name="code">DEDLOANS</field>
+            <field name="name">سلف مؤقت</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_loans or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_loans)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_duc_loans1" model="hr.salary.rule">
+            <field name="code">DEDLOANS2</field>
+            <field name="name">سلف دائم</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_loans1 or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_loans1)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_duc_absence_days" model="hr.salary.rule">
+            <field name="code">DEDABS</field>
+            <field name="name">غياب</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_absence_days or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_absence_days)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+        <record id="hr_payroll_rule_duc_late_time" model="hr.salary.rule">
+            <field name="code">DEDLAT</field>
+            <field name="name">خصم تأخير</field>
+            <field name="struct_id" ref="hr_salary_structure_mina"/>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.duc_late_time or False</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = - (contract.duc_late_time)</field>
+            <field name="sequence" eval="50"/>
+            <field name="note">Deductions of the employee</field>
+        </record>
+
+    </data>
+</odoo>
