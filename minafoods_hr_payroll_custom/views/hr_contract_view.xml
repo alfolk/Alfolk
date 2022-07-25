@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_contract_form_egypt_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.egypt.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='information']" position="after">
+                    <field name="no_days_month" invisible="1"/>
+                    <page string="البدلات">
+                        <group>
+                            <group>
+                                <field name="alw_call" string="بدل إتصالات"/>
+                                <field name="alw_trans" string="بدل موصلات"/>
+                                <field name="alw_clk" string="بدل كلارك"/>
+                                <field name="alw_bonus" string="حافز"/>
+                                <field name="alw_bonus1" string="بونص"/>
+                            </group>
+                            <group>
+                                <field name="alw_bonus2" string="حافز انتظام"/>
+                                <field name="alw_food" string="بدل وجبة"/>
+                                <field name="alw_add" string="أجر إضافي"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="إستقطاعات">
+                        <group>
+                            <group>
+                                <field name="duc_uniform" string="خصم يونيفورم"/>
+                                <field name="duc_minus" string="جزاءات"/>
+                            </group>
+                            <group>
+                                <field name="duc_loans" string="سلف مؤقت"/>
+                                <field name="duc_loans1" string="سلف دائم"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="الحضور">
+                        <group>
+                            <group>
+                                <field name="number_of_days" string="ايام العمل"/>
+                                <field name="number_of_hours" string="اجمالي ساعات العمل"/>
+                                <field name="number_off_days" string="الأجازات"/>
+                                <field name="ovr_time" string="ساعات عمل إضافية"/>
+                                <field name="late_time" string="ساعات تاخير"/>
+                                <field name="absence_days" string="أيام غياب"/>
+                                <field name="no_late_days" string="أيام السهر"/>
+                                <field name="total_late_bonus" string="وقت السهر"/>
+                            </group>
+                            <group>
+                                <field name="duc_absence_days" string="خصم غياب"/>
+                                <field name="duc_late_time" string="خصم تأخير"/>
+                                <field name="alw_ovr_time" string="أوفر تايم"/>
+                                <field name="alw_late" string="بدل سهر"/>
+                                <field name="alw_late2" string="وجبة سهر"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
